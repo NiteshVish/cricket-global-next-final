@@ -8,7 +8,7 @@ export class HttpClient {
   constructor(baseURL) {
     console.log("base url",baseURL)
     this.instance = axios.create({
-      baseURL,
+      baseURL: "https://773mm7xb-4002.inc1.devtunnels.ms/api/",
     });
     this._initializeResponseInterceptor();
   }
