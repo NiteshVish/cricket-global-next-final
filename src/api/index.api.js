@@ -6,6 +6,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export class HttpClient {
   constructor(baseURL) {
+    console.log("base url",baseURL)
     this.instance = axios.create({
       baseURL,
     });
