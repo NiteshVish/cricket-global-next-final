@@ -5,7 +5,7 @@ const images = Imageabout;
 const Testimonialbanner = () => {
   return (
     <section
-      className="relative bg-cover bg-center bg-no-repeat text-white flex flex-col items-center justify-center text-center px-6 py-16 md:py-24 h-[60vh] md:h-[78vh]"
+      className="relative bg-cover bg-center bg-no-repeat text-white flex flex-col items-center justify-center text-center px-6 py-16 md:py-24 h-[60vh] md:h-[85vh]"
       style={{
         // backgroundImage: `url("${homepage1.Home1.src}")`
         backgroundImage: `url(${images[0].src})`,

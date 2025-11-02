@@ -27,6 +27,9 @@ export      const homepage=[
     Pass2,
         Passion3,
     Passion4,
+    Pass2,
+        Passion3,
+    Passion4,
     
 ]
 export const images = [
@@ -62,7 +65,17 @@ export const gallery = [
     Passion1,
     Passion3,
     Passion4,
-    Pass2
+    Pass2,
+    Passion1,
+    Passion3,
+    Passion4,
+    Pass2,Passion1,
+    Passion3,
+    Passion4,
+    Pass2,Passion1,
+    Passion3,
+    Passion4,
+    
   
 ];
 

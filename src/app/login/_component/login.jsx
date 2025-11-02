@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import { logoimg } from "@/shared/images";
 
 import authInstance from "@/api/auth/auth.api";
 import { setTokenLocal } from "@/utils/localStorage.util";
+import Image from "next/image";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -53,8 +55,8 @@ export default function Login() {
   return (
     <section className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center">
-        <img
-          src="/assets/images/Logo.webp"
+        <Image
+          src={logoimg.logoImg}
           alt="Logo"
           className="w-36 mx-auto mb-2"
         />

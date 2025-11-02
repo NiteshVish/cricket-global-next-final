@@ -83,7 +83,7 @@ const Passion1 = () => {
               <Image
                 src={img}
                 alt={`CLG Member ${index + 1}`}
-                className="w-full h-[580px] sm:h-[350px] md:h-[450px] object-cover"
+                className="w-full h-[480px] sm:h-[350px] md:h-[450px] object-cover"
               />
             </motion.div>
           ))}

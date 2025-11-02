@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { logoimg ,logoImg} from "@/shared/images"
 
 import { Send } from "lucide-react";
+import Image from "next/image";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -29,8 +30,8 @@ const Contact = () => {
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-2xl overflow-hidden w-full max-w-[900px]">
        
         <div className="md:w-1/2 w-full flex flex-col items-center justify-center p-8 bg-gradient-to-b from-blue-950 to-blue-700 text-white">
-          <img
-            src={logoimg.logoImg}
+          <Image
+            src={logoimg.logobase}
             alt="Cricket Lovers Global Logo"
             className="w-52 md:w-72 mb-4"
           />

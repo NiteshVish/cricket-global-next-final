@@ -1,6 +1,8 @@
 "use client";
 import authInstance from "@/api/auth/auth.api";
+import Image from "next/image";
 import React, { useState } from "react";
+import { logoimg } from "@/shared/images";
 
 export default function Signup() {
   const countries = [
@@ -70,7 +72,7 @@ export default function Signup() {
   return (
     <section className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl text-center">
-        <img src="/assets/images/Logo.webp" className="w-36 mx-auto mb-2" alt="Logo" />
+        <Image src={logoimg.logoImg} className="w-36 mx-auto mb-2" alt="Logo" />
         <h3 className="text-xl font-semibold text-black mb-6">SIGN UP</h3>
 
         <form onSubmit={handleSubmit}>

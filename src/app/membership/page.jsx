@@ -9,10 +9,10 @@ import SoloMembership from './_component/solomembership'
  function MainMembership(){
   return (
     <>    <Membership1/>
-    <MembershipBenefit/>
     <PricingPlan/>
-    <RibbonOffer/>
     <SoloMembership/>
+    <RibbonOffer/>
+    <MembershipBenefit/>
     </>
 
   )
