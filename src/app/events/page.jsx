@@ -6,7 +6,7 @@ function Event() {
     return (
         <div>
             <EventList/>
-            <EventPage/>
+            {/* <EventPage/> */}
             
         </div>
     );

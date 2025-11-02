@@ -1,17 +1,26 @@
 "use client";
 import { useState } from "react";
 
-export default function EventDetailsPage() {
+export default function EventDetailsPage({event}) {
   const [qty, setQty] = useState(1);
   const [showOptions, setShowOptions] = useState(false);
   const [option, setOption] = useState("");
 
-  const price = 999; 
-  const total = qty * price;
+  const tshirtPrice = 10;
+  const batPrice = 20; 
+  
 
   const handleTicketClick = () => {
     setShowOptions(true);
   };
+
+  const getTotalWithOption = () => {
+    const total = event?.tickets?.[0]?.price ? qty * event.tickets[0].price : ""
+    let optionPrice = 0;
+    if (option === "T-Shirt") optionPrice = tshirtPrice;
+    else if (option === "Bat") optionPrice = batPrice;
+    return total + optionPrice*qty;
+  }
 
   const handleConfirm = () => {
     if (!option) {
@@ -22,6 +31,30 @@ export default function EventDetailsPage() {
     setShowOptions(false);
     setOption("");
   };
+
+  function formatEventTime(startStr, endStr) {
+    const start = new Date(startStr);
+    const end = new Date(endStr);
+
+
+    const date = start.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric"
+    });
+
+    const startTime = start.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric"
+    });
+
+    const endTime = end.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "numeric"
+    });
+
+    return `${date} @ ${startTime.toLowerCase()} - ${endTime.toLowerCase()}`;
+}
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -35,8 +68,8 @@ export default function EventDetailsPage() {
         </p>
 
         <div className="mt-6 flex flex-col md:flex-row justify-center items-center gap-8 text-lg font-semibold">
-          <p>OCTOBER 3, 2022 @ 8:00 AM - JULY 9, 2032 @ 5:00 PM</p>
-          <p>PRICE : <span className="font-bold">$99.99</span></p>
+          <p>{formatEventTime(event.startDate, event.endDate)}</p>
+          <p>PRICE : <span className="font-bold">&euro; {event?.tickets?.[0]?.price }</span></p>
         </div>
       </section>
 
@@ -68,12 +101,12 @@ export default function EventDetailsPage() {
           <h2 className="text-2xl font-bold mb-5">TICKETS</h2>
 
           <p className="text-gray-600 text-sm mb-2">
-            <span className="font-bold">VENUE:</span> OLD TRAFFORD CRICKET GROUND, MANCHESTER, UNITED KINGDOM
+            <span className="font-bold">VENUE:</span> {event.venue}
           </p>
 
           <div className="flex justify-between items-center py-4 border-b">
-            <p className="font-bold text-lg">IND vs ENG (W) T20 INTERNATIONAL</p>
-            <p className="font-bold text-lg">${price}.00</p>
+            <p className="font-bold text-lg">{event.title}</p>
+            <p className="font-bold text-lg">&euro; {event?.tickets?.[0]?.price}</p>
           </div>
 
           {/* Quantity */}
@@ -87,7 +120,7 @@ export default function EventDetailsPage() {
           </div>
 
           <div className="flex justify-between items-center pb-6 border-b">
-            <p className="font-bold">TOTAL: ${total}.00</p>
+            <p className="font-bold">TOTAL: &euro; {getTotalWithOption()}</p>
 
             {!showOptions ? (
               <button 
@@ -124,10 +157,9 @@ export default function EventDetailsPage() {
 <div className="bg-white shadow-md p-8 rounded-lg md:w-[380px]">
   <h2 className="text-3xl font-bold mb-6">TICKET DETAILS</h2>
   <div className="space-y-5 text-base leading-relaxed">
-    <p><span className="font-bold">START:</span> July 4, 2026 @ 2:00 PM</p>
-    <p><span className="font-bold">END:</span> July 4, 2026 @ 6:00 PM</p>
-    <p><span className="font-bold">COST:</span> £998.00 – £999.00</p>
-    <p><span className="font-bold">EVENT CATEGORY:</span> T20 INTERNATIONAL</p>
+    <p><span className="font-bold">TIME:</span> {formatEventTime(event.startDate, event.endDate)}</p>
+    <p><span className="font-bold">COST:</span> &euro; {getTotalWithOption()}</p>
+    <p><span className="font-bold">EVENT CATEGORY:</span> {event.category}</p>
   </div>
 </div>
 

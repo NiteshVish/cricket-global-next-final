@@ -5,43 +5,45 @@ import Image from "next/image";
 import React, { useRef, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion } from "framer-motion";
-// import Pass2 from "../../assets/Pass2.jpeg";    
-// import Passion3 from "../../assets/Passion3.webp";
-// import Passion4 from "../../assets/Passion4.webp";  
+
 const Passion1 = () => {
   const scrollRef = useRef(null);
 
-  
-  
-
-  // Auto-scroll images
+  // Auto-scroll slides
   useEffect(() => {
     const interval = setInterval(() => {
-      if (scrollRef.current) {
-        const maxScrollLeft = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-        if (scrollRef.current.scrollLeft >= maxScrollLeft) {
-          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          scrollRef.current.scrollBy({ left: 320 + 12, behavior: "smooth" }); // image width + gap
-        }
+      const container = scrollRef.current;
+      if (!container) return;
+
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+      if (container.scrollLeft >= maxScrollLeft - 5) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: container.clientWidth, behavior: "smooth" });
       }
-    }, 1000); // 3 seconds per scroll
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Manual scroll
   const scroll = (direction) => {
-    const { current } = scrollRef;
-    const scrollAmount = 320 + 12; // width + gap
-    if (direction === "left")
-      current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    else current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const scrollAmount = container.clientWidth;
+    container.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
+  // Animation
   const imageVariants = {
-    hidden: { opacity: 5, scale: 0.2, y: 30 },
-    visible: { opacity: 4, scale: 1, y: 0, transition: { duration: 0.1, ease: "easeOut" } },
-    hover: { scale: 0.6, transition: { duration: 0.3 } },
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
+    hover: { scale: 1.05, transition: { duration: 0.3 } },
   };
 
   return (
@@ -50,15 +52,17 @@ const Passion1 = () => {
         PASSION BEYOND <br className="hidden sm:block" /> BOUNDARIES
       </h2>
 
-      <div className="relative w-[990px] mx-auto md:max-w-[330]">
+      <div className="relative max-w-[1200px] mx-auto w-full">
+
         {/* Left Arrow */}
         <button
           onClick={() => scroll("left")}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#ffffffc9] backdrop-blur-sm shadow-md p-3 rounded-full hover:bg-white z-10 cursor-pointer"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 backdrop-blur-md shadow-md p-3 rounded-full hover:bg-white z-10 cursor-pointer hidden md:flex"
         >
           <FaChevronLeft className="text-[#1a1a40] text-xl" />
         </button>
 
+        {/* Image Container */}
         <div
           ref={scrollRef}
           className="flex gap-4 overflow-x-scroll scroll-smooth scrollbar-hide"
@@ -66,7 +70,11 @@ const Passion1 = () => {
           {homepage.map((img, index) => (
             <motion.div
               key={index}
-              className="flex-shrink-0 w-[320px] rounded-xl overflow-hidden shadow-md"
+              className="flex-shrink-0 
+                w-full
+                sm:w-[50%]
+                lg:w-[33.33%]
+                rounded-xl overflow-hidden shadow-md"
               variants={imageVariants}
               initial="hidden"
               animate="visible"
@@ -75,7 +83,7 @@ const Passion1 = () => {
               <Image
                 src={img}
                 alt={`CLG Member ${index + 1}`}
-                className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
+                className="w-full h-[580px] sm:h-[350px] md:h-[450px] object-cover"
               />
             </motion.div>
           ))}
@@ -84,7 +92,7 @@ const Passion1 = () => {
         {/* Right Arrow */}
         <button
           onClick={() => scroll("right")}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#ffffffc9] backdrop-blur-sm shadow-md p-3 rounded-full hover:bg-white z-10 cursor-pointer"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 backdrop-blur-md shadow-md p-3 rounded-full hover:bg-white z-10 cursor-pointer hidden md:flex"
         >
           <FaChevronRight className="text-[#1a1a40] text-xl" />
         </button>

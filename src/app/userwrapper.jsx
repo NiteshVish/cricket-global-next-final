@@ -13,7 +13,6 @@ import { Contactpage } from "./contact/page";
 import { Loginpage } from "./login/page";
 import { Signuppage } from "./signup/page";
 import { Gallerypage } from "./gallery/page";
-import { TicketDetails } from "./ticketdetails/page";
 
 export default function Userwrapper({ children }) {
   const pathname = usePathname();
@@ -29,7 +28,6 @@ export default function Userwrapper({ children }) {
       <CaresPage/>
       <About/>
       <Event/>
-      <TicketDetails/>
       <Contactpage/>
       <Loginpage/>
       <Signuppage/>

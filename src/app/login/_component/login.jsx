@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 
 import authInstance from "@/api/auth/auth.api";
+import { setTokenLocal } from "@/utils/localStorage.util";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -13,7 +14,6 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) return setError("All fields are required ❌");
-
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) return setEmailError("Please enter a valid email");
 
@@ -23,11 +23,11 @@ export default function Login() {
     try {
       const res = await authInstance.login({ email, password });
       setLoading(false);
-
-      if (!res?.success) return setError(res?.message || "Login failed ❌");
-
+      console.log("Login Response:", res);
+      if (res?.status.toLowerCase() != "success") return setError(res?.message || "Login failed ❌");
+      setTokenLocal(res?.data?.token);
       alert("Login Successful ✅");
-      window.location.href = "/home";
+      window.location.href = "/";
     } catch {
       setError("Something went wrong ❌");
       setLoading(false);

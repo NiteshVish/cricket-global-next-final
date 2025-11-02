@@ -75,7 +75,7 @@ const Care1 = () => {
                   width={800}
   height={500}
                   alt={`CSR Activity ${idx + 1}`}
-                  className="w-full h-[180px] sm:h-[250px] md:h-[400px] lg:h-[500px] object-cover rounded-lg hover:scale-80 transition-all duration-100"
+                  className="w-full h-[180px] sm:h-[250px] md:h-[400px] lg:h-[500px] object-cover rounded-lg hover:scale-130 transition-all duration-100"
                 />
               </div>
             ))}

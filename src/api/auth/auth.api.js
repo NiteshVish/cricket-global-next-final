@@ -76,6 +76,7 @@ class Auth extends HttpClient {
       data: reqBody,
     });
   };
+  
 
 }
 

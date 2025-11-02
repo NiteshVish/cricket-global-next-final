@@ -45,7 +45,7 @@ const Navbar = () => {
         </div>
 
         <Link
-          href="/signup"
+          href="/login"
           className="hidden lg:block bg-green-600 hover:bg-[#001B5E] border border-transparent hover:border-green-600 hover:text-green-600 text-white font-semibold px-9 py-3 rounded-full"
         >
           LOGIN/SIGN UP

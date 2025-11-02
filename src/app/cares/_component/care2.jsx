@@ -65,7 +65,7 @@ const Care2 = () => {
         </div>
 
         {/* RIGHT SLIDER */}
-        <div className="order-1 md:order-2 relative w-full overflow-hidden rounded-lg shadow-lg hover:scale-80 transition-all duration-100">
+        <div className="order-1 md:order-2 relative w-full overflow-hidden rounded-lg shadow-lg hover:scale-110 transition-all duration-100">
           <Slider {...settings}>
             {[1, 2, 3].map((i) => (
               <div key={i}>

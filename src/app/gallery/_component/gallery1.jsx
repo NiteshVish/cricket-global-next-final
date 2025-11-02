@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { motion } from "framer-motion";
 import { gallery } from "@/shared/images";
@@ -37,7 +38,7 @@ const Gallery1 = () => {
             <Image
               src={img}
               alt={`Gallery ${index + 1}`}
-              className="w-full h-[120px] sm:h-[180px] md:h-[250px] lg:h-[350px] object-cover transform hover:scale-60 transition duration-500 ease-out"
+              className="w-full h-[120px] sm:h-[180px] md:h-[250px] lg:h-[350px] object-cover transform hover:scale-110 transition duration-500 ease-out"
             />
           </motion.div>
         ))}

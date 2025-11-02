@@ -1,7 +1,8 @@
 import React from 'react'
 import Signup from './_component/signupPage'
 
-export const Signuppage = () => {
+export default function Signuppage (){
   return (
-<Signup/>  )
+    <Signup/>  
+  )
 }

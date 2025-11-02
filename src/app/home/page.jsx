@@ -1,3 +1,4 @@
+"use client";
 import { FileSearch } from "lucide-react";
 import Home from "./_component/homepage";
 import News from "./_component/news";
@@ -8,7 +9,7 @@ function Main() {
   return (
     <>
     <Home/>
-     <Testinomials/>
+    <Testinomials/>
     <Passion1/>
     <Passion2/>
     <News/>
