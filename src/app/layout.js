@@ -7,6 +7,9 @@ import Userwrapper from "./userwrapper";
 import { usePathname } from "next/navigation";
 import Footer from "./_layout/footer";
 import Navbar from "./_layout/navbar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 const geistSans = Geist({
@@ -26,7 +29,7 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const hideNavFooter = pathname === "/login" || pathname === "/signup";
+  const hideNavFooter = pathname === "/login" || pathname === "/signup" || pathname==="/success";;
   return (
     
     <html lang="en">
@@ -35,6 +38,7 @@ export default function RootLayout({ children }) {
       > {!hideNavFooter && <Navbar/>}
       <main>
      {children}
+        <ToastContainer position="top-right" autoClose={3000} />
      </main>
        {!hideNavFooter && <Footer />}
 

@@ -1,25 +1,18 @@
-import { Limelight } from "next/font/google";
-import HttpClient from "./index.api";  // adjust path if needed
+import HttpClient from "./index.api";
 
-
-const baseURL = process.env.NEXT_PUBLIC_API_URL;
-
-class MemebrshipApi extends HttpClient {
+class MembershipApi extends HttpClient {
   constructor() {
-    super(baseURL);
+    super(process.env.NEXT_PUBLIC_API_URL);
   }
 
-  // ✅ Get all events with filters
-  getAllMembershipPlan = async () => {
-    return await this.instance.get(
-      `/plan/get-all-membership-plans`,
-      {
-        params: {limit: 2}
-      }
-    );
-  };
+  async createMembershipPayment(payload) {
+    return this.post("/user/create-membership-payment", payload);
+  }
+
+  async getAllPlans() {
+    return this.get("/user/get-all-membership-plan");
+  }
 }
 
-// Create instance
-const memebrshipApi = new MemebrshipApi();
-export default memebrshipApi;
+const membershipApi = new MembershipApi();
+export default membershipApi;

@@ -16,7 +16,7 @@ import { Gallerypage } from "./gallery/page";
 
 export default function Userwrapper({ children }) {
   const pathname = usePathname();
-  const hideNavFooter = pathname === "/login" || pathname === "/signup";
+  const hideNavFooter = pathname === "/login" || pathname === "/signup" || pathname==="/success";
 
   return (
     <>

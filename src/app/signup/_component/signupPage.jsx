@@ -3,6 +3,8 @@ import authInstance from "@/api/auth/auth.api";
 import Image from "next/image";
 import React, { useState } from "react";
 import { logoimg } from "@/shared/images";
+import { toast } from "react-toastify";
+
 
 export default function Signup() {
   const countries = [
@@ -60,7 +62,7 @@ export default function Signup() {
         return;
       }
 
-      alert("Signup Successful ✅");
+      toast("Signup Successful ✅");
       window.location.href = "/login";
     } catch (err) {
       console.error(err);

@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { logoimg } from "@/shared/images";
+import { toast } from "react-toastify";
+
 
 import authInstance from "@/api/auth/auth.api";
 import { setTokenLocal } from "@/utils/localStorage.util";
@@ -28,7 +30,7 @@ export default function Login() {
       console.log("Login Response:", res);
       if (res?.status.toLowerCase() != "success") return setError(res?.message || "Login failed ❌");
       setTokenLocal(res?.data?.token);
-      alert("Login Successful ✅");
+      toast("Login Successful ✅");
       window.location.href = "/";
     } catch {
       setError("Something went wrong ❌");
@@ -46,9 +48,9 @@ export default function Login() {
       const res = await authInstance.forgetPass({ email });
 
       if (!res?.success) return setError(res?.message || "Request failed ❌");
-      alert("Reset Email Send Successfully ✅");
+      toast("Reset Email Send Successfully ✅");
     } catch {
-      alert("Something went wrong ❌");
+      toast("Something went wrong ❌");
     }
   };
 
